@@ -7,15 +7,18 @@
   "scripts": {
     "build": "tsc",
     "start": "node dist/index.js",
+    "test": "jest --config .jestrc.json",
     "lint": "eslint . --ext .ts",
     "format": "prettier --write **/*.ts"
   },
   "dependencies": {},
   "devDependencies": {
+    "@types/jest": "25.2.3",
     "@typescript-eslint/eslint-plugin": "3.0.2",
     "@typescript-eslint/parser": "3.0.2",
     "eslint": "7.1.0",
     "husky": "4.2.5",
+    "jest": "26.0.1",
     "lint-staged": "10.2.6",
     "prettier": "2.0.5",
     "typescript": "3.9.3"
