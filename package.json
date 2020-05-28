@@ -7,9 +7,13 @@
   "scripts": {
     "build": "tsc",
     "start": "node dist/index.js",
+    "debug": "nodemon",
     "test": "jest --config .jestrc.json",
     "lint": "eslint . --ext .ts",
     "format": "prettier --write **/*.ts"
+  },
+  "dependencies": {
+    "fastify": "^2.14.1"
   },
   "devDependencies": {
     "@types/jest": "25.2.3",
@@ -22,7 +26,10 @@
     "husky": "4.2.5",
     "jest": "26.0.1",
     "lint-staged": "10.2.6",
+    "nodemon": "2.0.4",
     "prettier": "2.0.5",
+    "ts-jest": "26.0.0",
+    "ts-node": "8.10.1",
     "typescript": "3.9.3"
   }
 }
