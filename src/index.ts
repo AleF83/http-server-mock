@@ -1,4 +1,6 @@
-import server from './server';
+import startServer from './server';
+
+const server = startServer();
 
 server.listen(8080, (err, address) => {
   if (err) {
