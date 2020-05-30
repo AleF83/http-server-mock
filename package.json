@@ -13,7 +13,7 @@
     "format": "prettier --write **/*.ts"
   },
   "dependencies": {
-    "fastify": "^2.14.1"
+    "fastify": "2.14.1"
   },
   "devDependencies": {
     "@types/jest": "25.2.3",
