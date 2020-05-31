@@ -12,5 +12,8 @@
     "plugin:import/warnings",
     "plugin:import/typescript",
     "plugin:prettier/recommended"
-  ]
+  ],
+  "rules": {
+    "import/order": "error"
+  }
 }

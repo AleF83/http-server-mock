@@ -2,5 +2,6 @@
   "preset": "ts-jest",
   "rootDir": ".",
   "testEnvironment": "node",
+  "testPathIgnorePatterns": ["<rootDir>/dist/", "<rootDir>/node_modules/"],
   "verbose": true
 }

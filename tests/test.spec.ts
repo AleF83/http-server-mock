@@ -1,5 +1,5 @@
-import startServer from '../src/server';
 import fastify from 'fastify';
+import startServer from '../src/server';
 
 describe('Sample test', () => {
   let server: fastify.FastifyInstance;
