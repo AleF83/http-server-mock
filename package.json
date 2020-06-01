@@ -6,6 +6,7 @@
   "license": "MIT",
   "scripts": {
     "build": "tsc",
+    "build:image": "docker buildx build -t alef83/http-server-mock .",
     "start": "node dist/index.js",
     "debug": "nodemon",
     "test": "jest --config .jestrc.json",
