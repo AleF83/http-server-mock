@@ -1,17 +1,24 @@
 {
   "root": true,
   "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": 2019,
+    "project": ["./tsconfig.eslint.json"]
+  },
   "plugins": [
     "@typescript-eslint",
+    "unicorn",
     "prettier",
     "jest"
   ],
   "extends": [
     "eslint:recommended",
+    "plugin:node/recommended",
     "plugin:@typescript-eslint/recommended",
     "plugin:import/errors",
     "plugin:import/warnings",
     "plugin:import/typescript",
+    "plugin:unicorn/recommended",
     "plugin:prettier/recommended",
     "plugin:jest/style"
   ],
