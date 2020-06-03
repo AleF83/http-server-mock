@@ -16,7 +16,7 @@
     "start": "node dist/index.js",
     "debug": "nodemon",
     "test": "jest --config .jestrc.json",
-    "test:unit": "yarn test --testPathPattern=\"src/.*\\.spec\\.ts$\"",
+    "test:unit": "yarn test --coverage --testPathPattern=\"src/.*\\.spec\\.ts$\"",
     "test:integration": "yarn docker:build && yarn docker:run && yarn test --testPathPattern=\"tests/.*\\.spec\\.ts$\" && yarn docker:stop",
     "lint": "eslint . --ext .ts",
     "format": "prettier --write **/*.ts"
