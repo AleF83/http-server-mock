@@ -9,7 +9,7 @@ FROM base AS build
 WORKDIR /service
 COPY package.json yarn.lock ./
 RUN yarn --pure-lockfile --production false
-COPY tsconfig.json .jestrc.json ./
+COPY tsconfig.json tsconfig.build.json .jestrc.json ./
 COPY src ./src
 RUN yarn test:unit
 RUN yarn build

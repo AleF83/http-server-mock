@@ -1,11 +1,12 @@
-import startServer from './server';
+import { NestFactory } from '@nestjs/core';
+import { FastifyAdapter, NestFastifyApplication } from '@nestjs/platform-fastify';
 
-const server = startServer();
+import { AppModule } from './app.module';
 
-server.listen(8080, '0.0.0.0', (err, address) => {
-  if (err) {
-    console.error(err);
-    process.exit(1);
-  }
-  console.log(`Server listening at ${address}`);
-});
+async function bootstrap() {
+  const app = await NestFactory.create<NestFastifyApplication>(AppModule, new FastifyAdapter({ logger: true }));
+
+  await app.listen(8080, '0.0.0.0');
+}
+
+bootstrap();

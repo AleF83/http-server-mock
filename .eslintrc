@@ -3,11 +3,12 @@
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "ecmaVersion": 2019,
-    "project": ["./tsconfig.eslint.json"]
+    "project": ["./tsconfig.json"]
   },
   "plugins": [
     "@typescript-eslint",
     "unicorn",
+    "promise",
     "prettier",
     "jest"
   ],
@@ -20,9 +21,26 @@
     "plugin:import/typescript",
     "plugin:unicorn/recommended",
     "plugin:prettier/recommended",
+    "plugin:promise/recommended",
     "plugin:jest/style"
   ],
   "rules": {
-    "import/order": "error"
+    "import/order": "error",
+    "node/no-unsupported-features/es-syntax": "off",
+    "node/no-unpublished-import": "off",
+    "unicorn/prevent-abbreviations": ["error", {
+      "checkFilenames": false
+    }]
+  },
+  "settings": {
+    "node": {
+      "allowModules": [
+        "@nestjs/core",
+        "@nestjs/common",
+        "@nestjs/platform-fastify",
+        "@nestjs/testing"
+      ],
+      "tryExtensions": [".ts", ".json", ".node"]
+    }
   }
 }
