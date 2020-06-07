@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Mock Management Controller Get mock 1`] = `
+Object {
+  "id": Any<String>,
+  "name": "my service mock",
+  "port": 3333,
+}
+`;
+
+exports[`Mock Management Controller Get mocks 1`] = `
+Object {
+  "id": Any<String>,
+  "name": "my service mock",
+  "port": 3333,
+}
+`;

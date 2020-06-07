@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Mock Management Create mock with port that is already in use 1`] = `
+Object {
+  "error": "Bad Request",
+  "message": "The port is already in use",
+  "statusCode": 400,
+}
+`;
+
+exports[`Mock Management Get mock by nonexistent id 1`] = `
+Object {
+  "error": "Not Found",
+  "message": "The mock with giver id doesn't exist",
+  "statusCode": 404,
+}
+`;

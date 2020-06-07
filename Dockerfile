@@ -11,7 +11,8 @@ COPY package.json yarn.lock ./
 RUN yarn --pure-lockfile --production false
 COPY tsconfig.json tsconfig.build.json .jestrc.json ./
 COPY src ./src
-RUN yarn test:unit
+COPY tests ./tests
+RUN yarn test:unit && yarn test:integration
 RUN yarn build
 
 FROM base AS release

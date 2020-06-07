@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Simple flow Delete service mock 1`] = `
+Object {
+  "id": Any<String>,
+  "name": "e2e service mock",
+  "port": 10000,
+}
+`;
+
+exports[`Simple flow Get service mock info 1`] = `
+Object {
+  "id": Any<String>,
+  "name": "e2e service mock",
+  "port": 10000,
+}
+`;
