@@ -1,37 +1,38 @@
 import { Injectable } from '@nestjs/common';
 import { Dictionary } from 'typescript-collections';
 import * as Constants from '../constants';
-import { ServiceMock, ServiceMockOptions } from '../types';
+import { ServerMockOptions } from '../types';
+import { ServerMock } from '../fake-server/fake-server.service';
 
 @Injectable()
-export class MockManagementService {
-  private _mocks: Dictionary<string, ServiceMock>;
-  private _mocksByPort: Dictionary<number, ServiceMock>;
+export class ServerRepository {
+  private _mocks: Dictionary<string, ServerMock>;
+  private _mocksByPort: Dictionary<number, ServerMock>;
 
   constructor() {
-    this._mocks = new Dictionary<string, ServiceMock>();
-    this._mocksByPort = new Dictionary<number, ServiceMock>();
+    this._mocks = new Dictionary<string, ServerMock>();
+    this._mocksByPort = new Dictionary<number, ServerMock>();
   }
 
-  getMocks(): ServiceMock[] {
+  getServers(): ServerMock[] {
     return this._mocks.values();
   }
 
-  getMock(id: string): ServiceMock | undefined {
+  getServer(id: string): ServerMock | undefined {
     return this._mocks.getValue(id);
   }
 
-  createMock(options: ServiceMockOptions): string {
+  createServer(options: ServerMockOptions): string {
     if (this._mocksByPort.containsKey(options.port)) {
       throw new Error(Constants.ERR_MOCK_PORT_ALREADY_IN_USE);
     }
-    const mock = new ServiceMock(options);
+    const mock = new ServerMock(options);
     this._mocks.setValue(mock.id, mock);
     this._mocksByPort.setValue(mock.port, mock);
     return mock.id;
   }
 
-  deleteMock(id: string): ServiceMock | undefined {
+  deleteServer(id: string): ServerMock | undefined {
     const mock = this._mocks.getValue(id);
     if (!mock) {
       return;

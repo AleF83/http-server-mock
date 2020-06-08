@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Mock Management Create mock with port that is already in use 1`] = `
+exports[`Server Management Create server that listens to port that is already in use 1`] = `
 Object {
   "error": "Bad Request",
   "message": "The port is already in use",
@@ -8,7 +8,7 @@ Object {
 }
 `;
 
-exports[`Mock Management Get mock by nonexistent id 1`] = `
+exports[`Server Management Get servers by nonexistent id 1`] = `
 Object {
   "error": "Not Found",
   "message": "The mock with giver id doesn't exist",

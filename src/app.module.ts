@@ -1,7 +1,8 @@
 import { Module } from '@nestjs/common';
-import { MockManagementModule } from './mock-management/mock-management.module';
+import { ServerManagementModule } from './server-management/server-management.module';
+import { ServerResponseModule } from './server-responses/server-response.module';
 
 @Module({
-  imports: [MockManagementModule],
+  imports: [ServerManagementModule, ServerResponseModule],
 })
 export class AppModule {}
