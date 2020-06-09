@@ -1,4 +1,6 @@
 {
-  "**/*.ts": ["eslint --fix", "prettier --write", "yarn test:unit --bail --findRelatedTests", "git add"],
+  "src/**/*.ts": ["eslint --fix", "prettier --write", "yarn test:unit --bail", "git add"],
+  "tests/**/*.spec.ts": ["eslint --fix", "prettier --write", "git add"],
+  "e2e/**/*.e2e-spec.ts": ["eslint --fix", "prettier --write", "git add"],
   "**/*.{json,yaml,yml,md}": ["prettier --write", "git add"]
 }

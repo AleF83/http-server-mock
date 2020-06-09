@@ -88,7 +88,7 @@ describe('Server Management', () => {
     const serverMockOptions = createTestServerMockOptions();
     const id = uuidV4();
     const mockManagementService = app.get(ServerRepository);
-    jest.spyOn(mockManagementService, 'createServer').mockReturnValueOnce(id);
+    jest.spyOn(mockManagementService, 'createServer').mockResolvedValueOnce(id);
 
     // Act
     const response = await app.inject({

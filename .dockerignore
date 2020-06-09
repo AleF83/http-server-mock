@@ -115,3 +115,5 @@ Dockerfile
 .lintstagedrc.json
 .editorconfig
 nodemon.json
+
+e2e/

@@ -70,14 +70,14 @@ describe('Server Mock Controller', () => {
     expect(shouldThrow).toThrow(Constants.ERR_MOCK_ID_DOES_NOT_EXIST);
   });
 
-  test('Create mock', () => {
+  test('Create mock', async () => {
     // Arrange
     const mockOptions = createTestServerMockOptions();
     const testMock = new ServerMock(mockOptions);
-    jest.spyOn(service, 'createServer').mockReturnValueOnce(testMock.id);
+    jest.spyOn(service, 'createServer').mockResolvedValueOnce(testMock.id);
 
     // Act
-    const mockId = controller.createServer(mockOptions);
+    const mockId = await controller.createServer(mockOptions);
 
     // Assert
     expect(mockId).toEqual({ id: testMock.id });
@@ -91,10 +91,10 @@ describe('Server Mock Controller', () => {
     });
 
     // Act
-    const shouldThrow = () => controller.createServer(mockOptions);
+    const shouldReject = controller.createServer(mockOptions);
 
     // Assert
-    expect(shouldThrow).toThrow(Constants.ERR_MOCK_PORT_ALREADY_IN_USE);
+    expect(shouldReject).rejects.toEqual(new Error(Constants.ERR_MOCK_PORT_ALREADY_IN_USE));
   });
 
   test('Create mock throws internal error', () => {
@@ -106,10 +106,10 @@ describe('Server Mock Controller', () => {
     });
 
     // Act
-    const shouldThrow = () => controller.createServer(mockOptions);
+    const shouldReject = controller.createServer(mockOptions);
 
     // Assert
-    expect(shouldThrow).toThrow(errorMessage);
+    expect(shouldReject).rejects.toEqual(new Error(errorMessage));
   });
 
   test('Delete mock', () => {
@@ -135,5 +135,33 @@ describe('Server Mock Controller', () => {
 
     // Assert
     expect(mock).toBeUndefined();
+  });
+
+  test('Start server mock', async () => {
+    // Arrange
+    const mockId = uuidV4();
+    const serviceStarServerStub = jest.spyOn(service, 'startServer');
+    // eslint-disable-next-line unicorn/no-useless-undefined
+    serviceStarServerStub.mockResolvedValueOnce(undefined);
+
+    // Act
+    await controller.startServer(mockId);
+
+    // Assert
+    expect(serviceStarServerStub).toHaveBeenCalled();
+  });
+
+  test('Stop server mock', async () => {
+    // Arrange
+    const mockId = uuidV4();
+    const serviceStopServerStub = jest.spyOn(service, 'stopServer');
+    // eslint-disable-next-line unicorn/no-useless-undefined
+    serviceStopServerStub.mockResolvedValueOnce(undefined);
+
+    // Act
+    await controller.stopServer(mockId);
+
+    // Assert
+    expect(serviceStopServerStub).toHaveBeenCalled();
   });
 });

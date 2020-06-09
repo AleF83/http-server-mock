@@ -22,11 +22,12 @@ export class ServerRepository {
     return this._mocks.getValue(id);
   }
 
-  createServer(options: ServerMockOptions): string {
+  async createServer(options: ServerMockOptions): Promise<string> {
     if (this._mocksByPort.containsKey(options.port)) {
       throw new Error(Constants.ERR_MOCK_PORT_ALREADY_IN_USE);
     }
     const mock = new ServerMock(options);
+    await mock.init();
     this._mocks.setValue(mock.id, mock);
     this._mocksByPort.setValue(mock.port, mock);
     return mock.id;
@@ -39,5 +40,16 @@ export class ServerRepository {
     }
     this._mocksByPort.remove(mock.port);
     return this._mocks.remove(id);
+  }
+
+  // TODO: Move to designated service
+  async startServer(id: string): Promise<void> {
+    const mock = this._mocks.getValue(id);
+    await mock?.start();
+  }
+
+  async stopServer(id: string): Promise<void> {
+    const mock = this._mocks.getValue(id);
+    await mock?.stop();
   }
 }

@@ -7,9 +7,11 @@ describe('Simple flow', () => {
   const port = 10000;
 
   let client: AxiosInstance;
+  let fakeServerClient: AxiosInstance;
 
   beforeAll(() => {
     client = axios.create({ baseURL: 'http://localhost:8080' });
+    fakeServerClient = axios.create({ baseURL: `http://localhost:${port}` });
   });
 
   test('No servers on init', async () => {
@@ -18,7 +20,7 @@ describe('Simple flow', () => {
   });
 
   test('Create fake server', async () => {
-    const serverMockOptions: ServerMockOptions = { name, port };
+    const serverMockOptions: ServerMockOptions = { name, port, startOnInit: false };
     const response = await client.post<{ id: string }>('/servers', serverMockOptions);
     expect(response.status).toEqual(201);
     id = response.data.id;
@@ -33,9 +35,23 @@ describe('Simple flow', () => {
     });
   });
 
+  test('Start fake-server', async () => {
+    const response = await client.post<void>(`/servers/${id}/start`);
+    expect(response.status).toEqual(200);
+  });
+
   // test('Set response', () => {});
 
-  // test('Call service', () => {});
+  test('Call service', async () => {
+    const response = await fakeServerClient.get('/');
+    expect(response.status).toEqual(200);
+    expect(response.data).toEqual('Hello, world');
+  });
+
+  test('Stop fake-server', async () => {
+    const response = await client.post<void>(`/servers/${id}/stop`);
+    expect(response.status).toEqual(200);
+  });
 
   test('Delete fake server', async () => {
     const response = await client.delete<ServerMockInfo>(`/servers/${id}`);

@@ -4,6 +4,9 @@
   "repository": "git@github.com:AleF83/http-server-mock.git",
   "author": "AleF83 <AlexanderFux83@gmail.com>",
   "license": "MIT",
+  "engines": {
+    "node": ">=10.0.0"
+  },
   "private": true,
   "workspaces": [
     "packages/*"
@@ -11,11 +14,11 @@
   "scripts": {
     "build": "tsc -p tsconfig.build.json",
     "docker:build": "docker buildx build -t alef83/http-server-mock .",
-    "docker:run": "docker run --rm -d -p 8080:8080 --name server-mock alef83/http-server-mock",
+    "docker:run": "docker run --rm -d -p 8080:8080 -p 10000-10010:10000-10010 --name server-mock alef83/http-server-mock",
     "docker:stop": "docker stop server-mock",
     "start": "node dist/index.js",
     "debug": "nodemon",
-    "test": "jest --config .jestrc.json",
+    "test": "jest --detectOpenHandles --config .jestrc.json",
     "test:unit": "yarn test --coverage --testPathPattern=\"src/.*\\.spec\\.ts$\"",
     "test:integration": "yarn test --testPathPattern=\"tests/.*\\.spec\\.ts$\"",
     "test:e2e": "yarn docker:build && yarn docker:run && yarn test --testPathPattern=\"e2e/.*\\.e2e-spec\\.ts$\" && yarn docker:stop || yarn docker:stop",

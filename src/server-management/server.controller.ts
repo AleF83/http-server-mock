@@ -34,9 +34,9 @@ export class ServerController {
 
   @Post()
   @HttpCode(HttpStatus.CREATED)
-  createServer(@Body() options: ServerMockOptions): { id: string } {
+  async createServer(@Body() options: ServerMockOptions): Promise<{ id: string }> {
     try {
-      const id = this._serverMockRepository.createServer(options);
+      const id = await this._serverMockRepository.createServer(options);
       return { id };
     } catch (error) {
       if (error.message === Constants.ERR_MOCK_PORT_ALREADY_IN_USE) {
@@ -49,5 +49,18 @@ export class ServerController {
   @Delete('/:id')
   deleteServer(@Param('id') id: string): ServerMockInfo | undefined {
     return this._serverMockRepository.deleteServer(id)?.info;
+  }
+
+  // TODO: Move to designated controller
+  @Post('/:id/start')
+  @HttpCode(200)
+  async startServer(@Param('id') id: string): Promise<void> {
+    return this._serverMockRepository.startServer(id);
+  }
+
+  @Post('/:id/stop')
+  @HttpCode(200)
+  async stopServer(@Param('id') id: string): Promise<void> {
+    return this._serverMockRepository.stopServer(id);
   }
 }

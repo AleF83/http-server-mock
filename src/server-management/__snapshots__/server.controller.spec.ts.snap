@@ -5,6 +5,7 @@ Object {
   "id": Any<String>,
   "name": "my service mock",
   "port": 3333,
+  "status": "not-initialized",
 }
 `;
 
@@ -13,5 +14,6 @@ Object {
   "id": Any<String>,
   "name": "my service mock",
   "port": 3333,
+  "status": "not-initialized",
 }
 `;
