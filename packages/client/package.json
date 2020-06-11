@@ -1,0 +1,27 @@
+{
+  "name": "http-server-mock-client",
+  "version": "0.1.0",
+  "main": "lib/index.js",
+  "author": "AleF83 <AlexanderFux83@gmail.com>",
+  "license": "MIT",
+  "files": [
+    "lib/**/*"
+  ],
+  "engines": {
+    "node": ">=10.0.0"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "prepare": "yarn build"
+  },
+  "dependencies": {
+    "axios": "0.19.2",
+    "http-server-mock-common": "0.1.0"
+  },
+  "devDependencies": {
+    "@types/jest": "26.0.0",
+    "jest": "26.0.1",
+    "nock": "12.0.3",
+    "typescript": "3.9.5"
+  }
+}

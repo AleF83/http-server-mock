@@ -10,8 +10,8 @@ import {
   BadRequestException,
   NotFoundException,
 } from '@nestjs/common';
+import { FakeServerInfo, CreateFakeServerRequest } from 'http-server-mock-common';
 import * as Constants from '../constants';
-import { ServerMockInfo, ServerMockOptions } from '../types';
 import { ServerRepository } from './server.repository';
 
 @Controller('/servers')
@@ -19,12 +19,12 @@ export class ServerController {
   constructor(private readonly _serverMockRepository: ServerRepository) {}
 
   @Get()
-  getServers(): ServerMockInfo[] {
+  getServers(): FakeServerInfo[] {
     return this._serverMockRepository.getServers().map((sm) => sm.info);
   }
 
   @Get('/:id')
-  getServer(@Param('id') id: string): ServerMockInfo {
+  getServer(@Param('id') id: string): FakeServerInfo {
     const mock = this._serverMockRepository.getServer(id);
     if (!mock) {
       throw new NotFoundException(Constants.ERR_MOCK_ID_DOES_NOT_EXIST);
@@ -34,7 +34,7 @@ export class ServerController {
 
   @Post()
   @HttpCode(HttpStatus.CREATED)
-  async createServer(@Body() options: ServerMockOptions): Promise<{ id: string }> {
+  async createServer(@Body() options: CreateFakeServerRequest): Promise<{ id: string }> {
     try {
       const id = await this._serverMockRepository.createServer(options);
       return { id };
@@ -47,7 +47,7 @@ export class ServerController {
   }
 
   @Delete('/:id')
-  deleteServer(@Param('id') id: string): ServerMockInfo | undefined {
+  deleteServer(@Param('id') id: string): FakeServerInfo | undefined {
     return this._serverMockRepository.deleteServer(id)?.info;
   }
 

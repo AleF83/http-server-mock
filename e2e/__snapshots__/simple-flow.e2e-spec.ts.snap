@@ -1,14 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Simple flow Delete fake server 1`] = `
-Object {
-  "id": Any<String>,
-  "name": "e2e service mock",
-  "port": 10000,
-  "status": "stopped",
-}
-`;
-
 exports[`Simple flow Get fake-server info 1`] = `
 Object {
   "id": Any<String>,

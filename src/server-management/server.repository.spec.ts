@@ -1,9 +1,9 @@
 import { v4 as uuidV4 } from 'uuid';
+import { CreateFakeServerRequest } from 'http-server-mock-common';
 import * as Constants from '../constants';
-import { ServerMockOptions } from '../types';
 import { ServerRepository } from './server.repository';
 
-const createTestServerMockOptions = (name?: string): ServerMockOptions => ({
+const createTestServerMockOptions = (name?: string): CreateFakeServerRequest => ({
   name: name || 'my service mock',
   port: 3333,
   startOnInit: false,

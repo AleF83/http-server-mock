@@ -1,64 +1,60 @@
-import axios, { AxiosInstance } from 'axios';
-import { ServerMockOptions, ServerMockInfo } from '../src/types';
+import { CreateFakeServerRequest, RegisterResponseMockRequest } from 'http-server-mock-common';
+import { createServerManagementClient, ServerManagerClient, FakeServerClient } from 'http-server-mock-client';
+import axios from 'axios';
 
 describe('Simple flow', () => {
-  let id: string;
   const name = 'e2e service mock';
   const port = 10000;
 
-  let client: AxiosInstance;
-  let fakeServerClient: AxiosInstance;
+  let serverManagementClient: ServerManagerClient;
+  let fakeServerClient: FakeServerClient;
 
   beforeAll(() => {
-    client = axios.create({ baseURL: 'http://localhost:8080' });
-    fakeServerClient = axios.create({ baseURL: `http://localhost:${port}` });
+    serverManagementClient = createServerManagementClient('http://localhost:8080');
   });
 
   test('No servers on init', async () => {
-    const response = await client.get('/servers');
-    expect(response.data).toHaveLength(0);
+    const servers = await serverManagementClient.listFakeServers();
+    expect(servers).toHaveLength(0);
   });
 
   test('Create fake server', async () => {
-    const serverMockOptions: ServerMockOptions = { name, port, startOnInit: false };
-    const response = await client.post<{ id: string }>('/servers', serverMockOptions);
-    expect(response.status).toEqual(201);
-    id = response.data.id;
-    expect(id).toBeDefined();
+    const fakeServerOptions: CreateFakeServerRequest = { name, port, startOnInit: false };
+    fakeServerClient = await serverManagementClient.createFakeServer(fakeServerOptions);
+    expect(fakeServerClient).toBeDefined();
   });
 
   test('Get fake-server info', async () => {
-    const response = await client.get<ServerMockInfo>(`/servers/${id}`);
-    expect(response.status).toEqual(200);
-    expect(response.data).toMatchSnapshot({
+    const response = await fakeServerClient.getInfo();
+    expect(response).toMatchSnapshot({
       id: expect.any(String),
     });
   });
 
   test('Start fake-server', async () => {
-    const response = await client.post<void>(`/servers/${id}/start`);
-    expect(response.status).toEqual(200);
+    await fakeServerClient.start();
   });
 
-  // test('Set response', () => {});
+  test('Set response', async () => {
+    const request: RegisterResponseMockRequest = {
+      requestMatcher: {},
+      expectedResponse: {},
+    };
+    const response = await fakeServerClient.registerResponseMock(request);
+    expect(response).toBeDefined();
+  });
 
   test('Call service', async () => {
-    const response = await fakeServerClient.get('/');
+    const response = await axios.get(`http://localhost:10000`);
     expect(response.status).toEqual(200);
     expect(response.data).toEqual('Hello, world');
   });
 
   test('Stop fake-server', async () => {
-    const response = await client.post<void>(`/servers/${id}/stop`);
-    expect(response.status).toEqual(200);
+    await fakeServerClient.stop();
   });
 
   test('Delete fake server', async () => {
-    const response = await client.delete<ServerMockInfo>(`/servers/${id}`);
-    expect(response.status).toEqual(200);
-    expect(response.data.id).toEqual(id);
-    expect(response.data).toMatchSnapshot({
-      id: expect.any(String),
-    });
+    await serverManagementClient.deleteFakeServer(fakeServerClient.id);
   });
 });

@@ -1,13 +1,13 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { FastifyAdapter, NestFastifyApplication } from '@nestjs/platform-fastify';
 import { v4 as uuidV4 } from 'uuid';
+import { CreateFakeServerRequest } from 'http-server-mock-common';
 import * as Constants from '../src/constants';
 import { AppModule } from '../src/app.module';
 import { ServerRepository } from '../src/server-management/server.repository';
-import { ServerMockOptions } from '../src/types';
 import { ServerMock } from '../src/fake-server/fake-server.service';
 
-const createTestServerMockOptions = (): ServerMockOptions => ({
+const createTestServerMockOptions = (): CreateFakeServerRequest => ({
   name: 'my server',
   port: 3333,
 });

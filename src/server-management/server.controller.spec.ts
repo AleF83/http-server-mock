@@ -1,12 +1,12 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { v4 as uuidV4 } from 'uuid';
+import { CreateFakeServerRequest } from 'http-server-mock-common';
 import * as Constants from '../constants';
-import { ServerMockOptions } from '../types';
 import { ServerMock } from '../fake-server/fake-server.service';
 import { ServerController } from './server.controller';
 import { ServerRepository } from './server.repository';
 
-const createTestServerMockOptions = (): ServerMockOptions => ({
+const createTestServerMockOptions = (): CreateFakeServerRequest => ({
   name: 'my service mock',
   port: 3333,
 });

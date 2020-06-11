@@ -3,24 +3,29 @@ import { NestFactory } from '@nestjs/core';
 import { NestFastifyApplication, FastifyAdapter } from '@nestjs/platform-fastify';
 import fastify from 'fastify';
 import { v4 as uuidV4 } from 'uuid';
-import { ServerResponse, ServerMockOptions, ServerMockInfo, ServerMockStatus } from '../types';
+import {
+  FakeServerInfo,
+  FakeServerStatus,
+  CreateFakeServerRequest,
+  RegisterResponseMockRequest,
+} from 'http-server-mock-common';
 import { FakeServerModule } from './fake-server.module';
 
 export class ServerMock {
   private _id: string;
   private _name: string;
   private _port: number;
-  private _status: ServerMockStatus;
-  private _responses: ServerResponse[];
+  private _status: FakeServerStatus;
+  private _responses: RegisterResponseMockRequest[];
   private readonly _startOnInit: boolean | undefined = true;
 
   private _serverApp: INestApplication | undefined;
 
-  constructor(options: ServerMockOptions) {
+  constructor(options: CreateFakeServerRequest) {
     this._id = uuidV4();
     this._name = options.name;
     this._port = options.port;
-    this._status = ServerMockStatus.Created;
+    this._status = FakeServerStatus.Created;
     this._startOnInit = options.startOnInit ?? true;
     this._responses = [];
   }
@@ -37,11 +42,11 @@ export class ServerMock {
     return this._port;
   }
 
-  get status(): ServerMockStatus {
+  get status(): FakeServerStatus {
     return this._status;
   }
 
-  get info(): ServerMockInfo {
+  get info(): FakeServerInfo {
     return {
       id: this.id,
       name: this.name,
@@ -50,18 +55,18 @@ export class ServerMock {
     };
   }
 
-  get responses(): ServerResponse[] {
+  get responses(): RegisterResponseMockRequest[] {
     return this._responses;
   }
 
   async init(): Promise<void> {
-    if (this.status !== ServerMockStatus.Created) {
+    if (this.status !== FakeServerStatus.Created) {
       return;
     }
     if (!this._serverApp) {
       const server = fastify({ logger: true });
       this._serverApp = await NestFactory.create<NestFastifyApplication>(FakeServerModule, new FastifyAdapter(server));
-      this._status = ServerMockStatus.Initialized;
+      this._status = FakeServerStatus.Initialized;
     }
     if (this._startOnInit) {
       await this.start();
@@ -69,14 +74,14 @@ export class ServerMock {
   }
 
   async start(): Promise<void> {
-    this._status = ServerMockStatus.Starting;
+    this._status = FakeServerStatus.Starting;
     await this._serverApp?.listen(this.port, '0.0.0.0');
-    this._status = ServerMockStatus.Running;
+    this._status = FakeServerStatus.Running;
   }
 
   async stop(): Promise<void> {
-    this._status = ServerMockStatus.Stopping;
+    this._status = FakeServerStatus.Stopping;
     await this._serverApp?.close();
-    this._status = ServerMockStatus.Stopped;
+    this._status = FakeServerStatus.Stopped;
   }
 }

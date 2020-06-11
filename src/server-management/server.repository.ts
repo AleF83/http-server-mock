@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { Dictionary } from 'typescript-collections';
+import { CreateFakeServerRequest } from 'http-server-mock-common';
 import * as Constants from '../constants';
-import { ServerMockOptions } from '../types';
 import { ServerMock } from '../fake-server/fake-server.service';
 
 @Injectable()
@@ -22,7 +22,7 @@ export class ServerRepository {
     return this._mocks.getValue(id);
   }
 
-  async createServer(options: ServerMockOptions): Promise<string> {
+  async createServer(options: CreateFakeServerRequest): Promise<string> {
     if (this._mocksByPort.containsKey(options.port)) {
       throw new Error(Constants.ERR_MOCK_PORT_ALREADY_IN_USE);
     }
