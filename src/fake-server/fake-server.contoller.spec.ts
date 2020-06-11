@@ -14,13 +14,14 @@ describe('Fake server controller', () => {
     controller = app.get(FakeServerController);
   });
 
-  test('Default endpoint', () => {
+  test('Default endpoint', async () => {
     const url = '/hello';
     const request = new MockRequest({
       url,
+      buffer: Buffer.from(JSON.stringify({ Hello: 'World' })),
     });
 
-    const response = controller.test(request);
+    const response = await controller.test(request);
     expect(response.url).toEqual(url);
   });
 });

@@ -39,7 +39,7 @@
         "@nestjs/common",
         "@nestjs/platform-fastify",
         "@nestjs/testing",
-        "wait-on"
+        "raw-body"
       ],
       "tryExtensions": [".ts", ".json", ".node"]
     }

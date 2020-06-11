@@ -26,4 +26,4 @@ export interface ServerResponse {
   url: string;
 }
 
-export type RequestInfo = Pick<http.IncomingMessage, 'url' | 'headers' | 'method'>;
+export type RequestInfo = Pick<http.IncomingMessage, 'url' | 'headers' | 'method'> & { body: any };
