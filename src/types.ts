@@ -1,5 +1,8 @@
+import http from 'http';
+
 export enum ServerMockStatus {
-  NotInitialized = 'not-initialized',
+  Created = 'created',
+  Initialized = 'initialized',
   Starting = 'starting',
   Running = 'running',
   Stopping = 'stopping',
@@ -22,3 +25,5 @@ export interface ServerMockInfo {
 export interface ServerResponse {
   url: string;
 }
+
+export type RequestInfo = Pick<http.IncomingMessage, 'url' | 'headers' | 'method'>;

@@ -14,6 +14,6 @@ Object {
   "id": Any<String>,
   "name": "e2e service mock",
   "port": 10000,
-  "status": "not-initialized",
+  "status": "initialized",
 }
 `;

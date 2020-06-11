@@ -1,9 +1,12 @@
-import { Controller, Get } from '@nestjs/common';
+import http from 'http';
+import { Controller, All, Req } from '@nestjs/common';
+import { RequestInfo } from '../types';
 
 @Controller()
 export class FakeServerController {
-  @Get()
-  test(): string {
-    return 'Hello, world';
+  @All()
+  test(@Req() request: http.IncomingMessage): RequestInfo {
+    const { url, method, headers } = request;
+    return { url, method, headers };
   }
 }

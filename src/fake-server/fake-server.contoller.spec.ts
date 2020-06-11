@@ -1,4 +1,5 @@
 import { TestingModule, Test } from '@nestjs/testing';
+import { Request as MockRequest } from 'mock-http';
 import { FakeServerController } from './fake-server.controller';
 
 describe('Fake server controller', () => {
@@ -14,7 +15,12 @@ describe('Fake server controller', () => {
   });
 
   test('Default endpoint', () => {
-    const response = controller.test();
-    expect(response).toBeDefined();
+    const url = '/hello';
+    const request = new MockRequest({
+      url,
+    });
+
+    const response = controller.test(request);
+    expect(response.url).toEqual(url);
   });
 });
