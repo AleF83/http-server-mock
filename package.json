@@ -55,7 +55,7 @@
     "eslint-plugin-unicorn": "20.1.0",
     "husky": "4.2.5",
     "jest": "26.0.1",
-    "lint-staged": "10.2.9",
+    "lint-staged": "10.2.10",
     "mock-http": "1.1.0",
     "nodemon": "2.0.4",
     "prettier": "2.0.5",
