@@ -37,7 +37,7 @@ export interface ResponseBehavior {
 }
 
 export interface RegisterResponseMockRequest {
-  requestMatcher: RequestMatcher;
+  requestMatcher?: RequestMatcher;
   expectedResponse?: ResponseExpectation;
   behavior?: ResponseBehavior;
 }

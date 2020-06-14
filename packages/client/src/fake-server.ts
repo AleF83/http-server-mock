@@ -1,5 +1,10 @@
 import { AxiosInstance } from 'axios';
-import { RegisterResponseMockRequest, RegisterResponseMockResponse, FakeServerInfo } from 'http-server-mock-common';
+import {
+  RegisterResponseMockRequest,
+  RegisterResponseMockResponse,
+  FakeServerInfo,
+  FakeServerCall,
+} from 'http-server-mock-common';
 
 export class FakeServerClient {
   constructor(private readonly _id: string, private readonly _axios: AxiosInstance) {}
@@ -9,25 +14,47 @@ export class FakeServerClient {
   }
 
   async start(): Promise<void> {
-    const response = await this._axios.post<void>(`/servers/${this._id}/start`);
+    const response = await this._axios.post<void>(`/${this._id}/start`);
     return response.data;
   }
 
   async stop(): Promise<void> {
-    const response = await this._axios.post<void>(`/servers/${this._id}/stop`);
+    const response = await this._axios.post<void>(`/${this._id}/stop`);
     return response.data;
   }
 
   async getInfo(): Promise<FakeServerInfo> {
-    const response = await this._axios.get<FakeServerInfo>(`/servers/${this._id}`);
+    const response = await this._axios.get<FakeServerInfo>(`/${this._id}`);
     return response.data;
   }
 
   async registerResponseMock(responseMock: RegisterResponseMockRequest): Promise<RegisterResponseMockResponse> {
     const response = await this._axios.post<RegisterResponseMockResponse>(
-      `/servers/${this._id}/register-response-mock`,
+      `/${this._id}/register-response-mock`,
       responseMock
     );
+    return response.data;
+  }
+
+  async unregisterResponseMock(responseMockId: string): Promise<void> {
+    const response = await this._axios.delete<void>(`/${this._id}/register-response-mock/${responseMockId}`);
+    return response.data;
+  }
+
+  async unregisterAllResponseMocks(): Promise<void> {
+    const response = await this._axios.delete<void>(`/${this._id}/register-response-mock`);
+    return response.data;
+  }
+
+  async getCalls(responseMockId: string): Promise<FakeServerCall[]> {
+    const response = await this._axios.get<FakeServerCall[]>(
+      `/${this._id}/register-response-mock/${responseMockId}/calls`
+    );
+    return response.data;
+  }
+
+  async getAllCalls(): Promise<FakeServerCall[]> {
+    const response = await this._axios.get<FakeServerCall[]>(`/${this._id}/calls`);
     return response.data;
   }
 }
