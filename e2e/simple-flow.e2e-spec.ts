@@ -1,12 +1,12 @@
 import { CreateFakeServerRequest, RegisterResponseMockRequest } from 'http-server-mock-common';
-import { createServerManagementClient, ServerManagerClient, FakeServerClient } from 'http-server-mock-client';
+import { createServerManagementClient, ServerManagementClient, FakeServerClient } from 'http-server-mock-client';
 import axios from 'axios';
 
 describe('Simple flow', () => {
   const name = 'e2e service mock';
   const port = 10000;
 
-  let serverManagementClient: ServerManagerClient;
+  let serverManagementClient: ServerManagementClient;
   let fakeServerClient: FakeServerClient;
 
   beforeAll(() => {
@@ -47,7 +47,7 @@ describe('Simple flow', () => {
   test('Call service', async () => {
     const response = await axios.get(`http://localhost:10000`);
     expect(response.status).toEqual(200);
-    expect(response.data).toEqual('Hello, world');
+    expect(response.data).toMatchSnapshot();
   });
 
   test('Stop fake-server', async () => {

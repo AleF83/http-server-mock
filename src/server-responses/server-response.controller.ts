@@ -1,5 +1,5 @@
-import { Controller, Get, Param, NotFoundException } from '@nestjs/common';
-import { RegisterResponseMockRequest } from 'http-server-mock-common';
+import { Controller, Get, Param, NotFoundException, Post, Body } from '@nestjs/common';
+import { RegisterResponseMockRequest, RegisterResponseMockResponse } from 'http-server-mock-common';
 import * as Constants from '../constants';
 import { ServerRepository } from '../server-management/server.repository';
 
@@ -15,5 +15,18 @@ export class ServerResponseController {
     }
 
     return fakeServer.responses;
+  }
+
+  @Post()
+  registerServerResponse(
+    @Param('serverId') serverId: string,
+    @Body() responseMock: RegisterResponseMockRequest
+  ): RegisterResponseMockResponse {
+    const fakeServer = this._serverMockRepository.getServer(serverId);
+    if (!fakeServer) {
+      throw new NotFoundException(Constants.ERR_MOCK_ID_DOES_NOT_EXIST);
+    }
+
+    return fakeServer.registerResponse(responseMock);
   }
 }

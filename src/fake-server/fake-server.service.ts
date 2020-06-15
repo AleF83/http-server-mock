@@ -8,7 +8,9 @@ import {
   FakeServerStatus,
   CreateFakeServerRequest,
   RegisterResponseMockRequest,
+  RegisterResponseMockResponse,
 } from 'http-server-mock-common';
+import { Dictionary } from 'typescript-collections';
 import { FakeServerModule } from './fake-server.module';
 
 export class ServerMock {
@@ -16,7 +18,7 @@ export class ServerMock {
   private _name: string;
   private _port: number;
   private _status: FakeServerStatus;
-  private _responses: RegisterResponseMockRequest[];
+  private _responses: Dictionary<string, RegisterResponseMockRequest>;
   private readonly _startOnInit: boolean | undefined = true;
 
   private _serverApp: INestApplication | undefined;
@@ -27,7 +29,7 @@ export class ServerMock {
     this._port = options.port;
     this._status = FakeServerStatus.Created;
     this._startOnInit = options.startOnInit ?? true;
-    this._responses = [];
+    this._responses = new Dictionary<string, RegisterResponseMockRequest>();
   }
 
   get id(): string {
@@ -56,7 +58,7 @@ export class ServerMock {
   }
 
   get responses(): RegisterResponseMockRequest[] {
-    return this._responses;
+    return this._responses.values();
   }
 
   async init(): Promise<void> {
@@ -83,5 +85,11 @@ export class ServerMock {
     this._status = FakeServerStatus.Stopping;
     await this._serverApp?.close();
     this._status = FakeServerStatus.Stopped;
+  }
+
+  registerResponse(responseMock: RegisterResponseMockRequest): RegisterResponseMockResponse {
+    const id: string = uuidV4();
+    this._responses.setValue(id, responseMock);
+    return { id };
   }
 }

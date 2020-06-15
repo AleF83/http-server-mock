@@ -9,7 +9,11 @@ export class FakeServerController {
   async test(@Req() request: http.IncomingMessage): Promise<RequestInfo> {
     const { url, method, headers } = request;
     const rawBody = await getRawBody(request, { encoding: 'utf8' });
-    const body = JSON.parse(rawBody);
+    let body;
+    if (rawBody) {
+      // TODO: Check Content-Type header
+      body = JSON.parse(rawBody);
+    }
     return { url, method, headers, body };
   }
 }

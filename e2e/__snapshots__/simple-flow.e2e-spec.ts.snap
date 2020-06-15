@@ -1,5 +1,18 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Simple flow Call service 1`] = `
+Object {
+  "headers": Object {
+    "accept": "application/json, text/plain, */*",
+    "connection": "close",
+    "host": "localhost:10000",
+    "user-agent": "axios/0.19.2",
+  },
+  "method": "GET",
+  "url": "/",
+}
+`;
+
 exports[`Simple flow Get fake-server info 1`] = `
 Object {
   "id": Any<String>,

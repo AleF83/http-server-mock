@@ -82,7 +82,7 @@ describe('Fake Server', () => {
     const responseMockId = uuidV4();
     const request: RegisterResponseMockRequest = {} as RegisterResponseMockRequest;
     const expectedResponse: RegisterResponseMockResponse = { id: responseMockId };
-    mock.onPost(`/${id}/register-response-mock`, request).reply(200, expectedResponse);
+    mock.onPost(`/${id}/responses`, request).reply(200, expectedResponse);
 
     // Act
     const response = await client.registerResponseMock(request);
@@ -95,7 +95,7 @@ describe('Fake Server', () => {
   test('Unregister response mock', async () => {
     // Arrange
     const responseMockId = uuidV4();
-    mock.onDelete(`/${id}/register-response-mock/${responseMockId}`).reply(200);
+    mock.onDelete(`/${id}/responses/${responseMockId}`).reply(200);
 
     // Act
     await client.unregisterResponseMock(responseMockId);
@@ -106,7 +106,7 @@ describe('Fake Server', () => {
 
   test('Unregister all response mocks', async () => {
     // Arrange
-    mock.onDelete(`/${id}/register-response-mock`).reply(200);
+    mock.onDelete(`/${id}/responses`).reply(200);
 
     // Act
     await client.unregisterAllResponseMocks();
@@ -119,7 +119,7 @@ describe('Fake Server', () => {
     // Arrange
     const responseMockId = uuidV4();
     const calls: FakeServerCall[] = [];
-    mock.onGet(`/${id}/register-response-mock/${responseMockId}/calls`).reply(200, calls);
+    mock.onGet(`/${id}/responses/${responseMockId}/calls`).reply(200, calls);
 
     // Act
     const response = await client.getCalls(responseMockId);
