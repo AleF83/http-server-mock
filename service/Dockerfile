@@ -10,7 +10,7 @@ FROM base AS build
 WORKDIR /app
 COPY package.json yarn.lock ./
 RUN --mount=type=cache,target=/usr/local/share/.cache/yarn/v6,sharing=locked yarn --pure-lockfile --production false
-COPY tsconfig.json tsconfig.build.json .jestrc.json ./
+COPY tsconfig.json tsconfig.json .jestrc.json ./
 COPY src ./src
 COPY tests ./tests
 RUN yarn test:unit && yarn test:integration

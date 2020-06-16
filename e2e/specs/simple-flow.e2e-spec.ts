@@ -1,6 +1,6 @@
+import axios from 'axios';
 import { CreateFakeServerRequest, RegisterResponseMockRequest } from 'http-server-mock-common';
 import { createServerManagementClient, ServerManagementClient, FakeServerClient } from 'http-server-mock-client';
-import axios from 'axios';
 
 describe('Simple flow', () => {
   const name = 'e2e service mock';

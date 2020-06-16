@@ -1,8 +1,3 @@
-node_modules/
-dist/
-build/
-coverage/
-
 logs
 *.log
 npm-debug.log*
@@ -10,17 +5,24 @@ yarn-debug.log*
 yarn-error.log*
 lerna-debug.log*
 
-Dockerfile
+.git
 .dockerignore
-.prettierrc
-.prettierignore
-.eslintrc
-.eslintignore
-.huskyrc.json
-.renovaterc
-.lintstagedrc.json
 .editorconfig
-nodemon.json
+.eslintingore
+.eslintrc
+.gitignore
+.huskyrc.json
+.lintstaged.json
+.prettierignore
+.prettierrc
+.renovaterc
 
-e2e/
-packages/cli/
+**/node_modules
+**/dist
+**/build
+**/coverage
+**/tests
+**/*Dockerfile
+
+packages
+!packages/common

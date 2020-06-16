@@ -3,6 +3,6 @@
   "rootDir": ".",
   "testEnvironment": "node",
   "testMatch": ["**/?(*.)+(spec|e2e-spec).ts"],
-  "testPathIgnorePatterns": ["<rootDir>/dist/", "<rootDir>/node_modules/", "<rootDir>/packages/"],
+  "testPathIgnorePatterns": ["<rootDir>/dist/", "<rootDir>/node_modules/"],
   "verbose": true
 }

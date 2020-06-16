@@ -2662,9 +2662,9 @@ configstore@^5.0.1:
     xdg-basedir "^4.0.0"
 
 consola@^2.3.0:
-  version "2.12.2"
-  resolved "https://registry.yarnpkg.com/consola/-/consola-2.12.2.tgz#9610f158e7b0a9ecc8f8bb0c4fc8e7c52bf41d05"
-  integrity sha512-c9mzemrAk57s3UIjepn8KKkuEH5fauMdot5kFSJUnqHcnApVS9Db8Rbv5AZ1Iz6lXzaGe9z1crQXhJtGX4h/Og==
+  version "2.13.0"
+  resolved "https://registry.yarnpkg.com/consola/-/consola-2.13.0.tgz#5a4dc75e1b1fddbd8b10728e7790a2e54efeeeb7"
+  integrity sha512-Jw+8qpL0yrpfqH9m90fWoDRQyn8TYU6Aegpl4UofoP81VYvQLoOWMpFw2vQ3U/cyLRRzTc/CyNC6YYVzZFU8Eg==
 
 console-control-strings@^1.0.0, console-control-strings@~1.1.0:
   version "1.1.0"
@@ -3726,9 +3726,9 @@ fast-json-stable-stringify@2.x, fast-json-stable-stringify@^2.0.0:
   integrity sha512-lhd/wF+Lk98HZoTCtlVraHtfh5XYijIjalXck7saUtuanSDyLMxnHhSXEDJqHxD7msR8D0uCmqlkwjCV8xvwHw==
 
 fast-json-stringify@^1.18.0:
-  version "1.20.1"
-  resolved "https://registry.yarnpkg.com/fast-json-stringify/-/fast-json-stringify-1.20.1.tgz#07e30057718d85c39a798d43678a4a91ea7fa30e"
-  integrity sha512-PEPWrRZvKqI11fY2uDhLLuoapIda9wVQ2mzAj8rkBfVD7jWvOSIICL0Om1knoReIWKF5y/5bbR/GzcZANaaJfQ==
+  version "1.20.2"
+  resolved "https://registry.yarnpkg.com/fast-json-stringify/-/fast-json-stringify-1.20.2.tgz#5038ec554d1093ab823bf78ad06e7d55d2220407"
+  integrity sha512-kzDDyTzmc9Vn9W3XP/9LhPPLOUXmRLLkrpK+wtbUQVpGwyEkRdYRvm1Dtfsqw3cwtAVkBI7TPev3J1rgnXwvpA==
   dependencies:
     ajv "^6.11.0"
     deepmerge "^4.2.2"
@@ -7715,9 +7715,9 @@ set-blocking@^2.0.0, set-blocking@~2.0.0:
   integrity sha1-BF+XgtARrppoA93TgrJDkrPYkPc=
 
 set-cookie-parser@^2.4.1:
-  version "2.4.5"
-  resolved "https://registry.yarnpkg.com/set-cookie-parser/-/set-cookie-parser-2.4.5.tgz#94a5060724e614c56c65588010594dc4b848fb8d"
-  integrity sha512-LkSDwseogN5l6TerqGzFzL9mUDTxSq3hX2b5AaynjC1nSCNWiDypEgHatfc0v6KcnfgV3/6F6h4ABh6igjzlQQ==
+  version "2.4.6"
+  resolved "https://registry.yarnpkg.com/set-cookie-parser/-/set-cookie-parser-2.4.6.tgz#43bdea028b9e6f176474ee5298e758b4a44799c3"
+  integrity sha512-mNCnTUF0OYPwYzSHbdRdCfNNHqrne+HS5tS5xNb6yJbdP9wInV0q5xPLE0EyfV/Q3tImo3y/OXpD8Jn0Jtnjrg==
 
 set-value@^2.0.0, set-value@^2.0.1:
   version "2.0.1"
@@ -8389,9 +8389,9 @@ timers-ext@^0.1.5, timers-ext@^0.1.7:
     next-tick "1"
 
 tiny-lru@^7.0.2:
-  version "7.0.2"
-  resolved "https://registry.yarnpkg.com/tiny-lru/-/tiny-lru-7.0.2.tgz#6a8853deb1e355f4c8863bf1289337e3e3a7e973"
-  integrity sha512-cmc9OOwmnAJtyFBYaznKR3abypEhWecarFrvS5db6qwSgoaDUWV0JX+mdh6B9wN60Wux3+gE1vjzxkoqxFBjqw==
+  version "7.0.6"
+  resolved "https://registry.yarnpkg.com/tiny-lru/-/tiny-lru-7.0.6.tgz#b0c3cdede1e5882aa2d1ae21cb2ceccf2a331f24"
+  integrity sha512-zNYO0Kvgn5rXzWpL0y3RS09sMK67eGaQj9805jlK9G6pSadfriTczzLHFXa/xcW4mIRfmlB9HyQ/+SgL0V1uow==
 
 tmp@^0.0.33:
   version "0.0.33"
