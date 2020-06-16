@@ -58,13 +58,13 @@
     },
     {
       "label": "tsc-watch",
+      "type": "shell",
       "command": "yarn",
       "args": [ "watch" ],
-      "type":"shell",
       "isBackground": true,
-      "group":"build",
+      "group": "build",
       "problemMatcher": "$tsc-watch",
-      "presentation":{
+      "presentation": {
         "reveal": "always",
       }
     }
