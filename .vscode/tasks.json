@@ -1,0 +1,72 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+      "label": "docker-build",
+			"type": "docker-build",
+			"platform": "node",
+			"dockerBuild": {
+        "tag": "alef83/http-server-mock:latest",
+				"dockerfile": "${workspaceFolder}/service/Development.Dockerfile",
+				"context": "${workspaceFolder}"
+      },
+      "options": {
+        "env": {
+          "DOCKER_BUILDKIT": "1"
+        }
+      }
+		},
+		{
+      "label": "docker-run: debug",
+			"type": "docker-run",
+			"dependsOn": [
+        "docker-build",
+        "tsc-watch"
+			],
+			"dockerRun": {
+        "containerName": "http-server-mock",
+				"image": "alef83/http-server-mock:latest",
+        "command": "node --nolazy --inspect-brk=0.0.0.0:9229 /http-server-mock/service/dist/index.js",
+        "ports": [
+          {
+            "containerPort": 8080,
+            "hostPort": 8080
+          },
+          {
+            "containerPort": 9229,
+            "hostPort": 9229
+          },
+          {
+            "containerPort": 10000,
+            "hostPort": 10000
+          }
+        ],
+				"env": {
+					"DEBUG": "*",
+					"NODE_ENV": "development"
+				}
+			},
+			"node": {
+				"enableDebugging": true
+			}
+    },
+    {
+      "label": "docker-remove",
+      "type": "shell",
+      "command": "docker stop http-server-mock && docker rm http-server-mock"
+
+    },
+    {
+      "label": "tsc-watch",
+      "command": "yarn",
+      "args": [ "watch" ],
+      "type":"shell",
+      "isBackground": true,
+      "group":"build",
+      "problemMatcher": "$tsc-watch",
+      "presentation":{
+        "reveal": "always",
+      }
+    }
+	]
+}

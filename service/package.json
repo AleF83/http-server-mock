@@ -9,15 +9,12 @@
   },
   "scripts": {
     "build": "tsc -p tsconfig.json",
-    "build:all": "lerna run build",
     "start": "node dist/index.js",
     "watch": "tsc -w -p tsconfig.json",
-    "debug": "nodemon",
+    "start:dev": "nodemon",
     "test": "jest --detectOpenHandles --config .jestrc.json",
     "test:unit": "yarn test --coverage --testPathPattern=\"src/.*\\.spec\\.ts$\"",
-    "test:integration": "yarn test --testPathPattern=\"tests/.*\\.spec\\.ts$\"",
-    "lint": "eslint . --ext .ts",
-    "format": "prettier --write **/*.ts"
+    "test:integration": "yarn test --testPathPattern=\"tests/.*\\.spec\\.ts$\""
   },
   "dependencies": {
     "@nestjs/common": "7.1.3",
