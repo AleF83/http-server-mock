@@ -11,6 +11,8 @@ jobs:
       - uses: actions/setup-node@v2-beta
         with:
           node-version: '14'
-      - run: yarn global add lerna
-      - run: lerna bootstrap
+      - name: action-lerna
+        uses: m19c/action-lerna@1.0.0
+        with:
+            args: bootstrap
       - run: yarn test:unit
