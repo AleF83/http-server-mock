@@ -13,7 +13,11 @@ import * as dockerCompose from 'docker-compose';
 import waitOn from 'wait-on';
 
 const serviceName = 'http-server-mock';
-const cwd = join(__dirname, '..');
+const cwd = join(__dirname, '../..');
+const options: dockerCompose.IDockerComposeBuildOptions = {
+  cwd,
+  log: true,
+};
 
 class E2ETestRunner extends DefaultJestRunner {
   constructor(config: Config.GlobalConfig, context: TestRunnerContext | undefined) {
@@ -21,9 +25,9 @@ class E2ETestRunner extends DefaultJestRunner {
   }
 
   async setup(): Promise<void> {
-    await dockerCompose.buildOne(serviceName, { cwd, log: true });
+    await dockerCompose.buildOne(serviceName, options);
 
-    await dockerCompose.upAll({ cwd, log: true });
+    await dockerCompose.upAll(options);
     await waitOn({
       resources: ['http-get://localhost:8080/servers'],
       timeout: 3000,
@@ -32,12 +36,12 @@ class E2ETestRunner extends DefaultJestRunner {
   }
 
   async handleError(error: Error): Promise<void> {
-    await dockerCompose.logs(serviceName, { cwd, log: true });
+    await dockerCompose.logs(serviceName, options);
     throw error;
   }
 
   async teardown(): Promise<void> {
-    await dockerCompose.down({ cwd, log: true });
+    await dockerCompose.down(options);
     await waitOn({
       resources: ['http-get://localhost:8080/servers'],
       timeout: 10000,
@@ -60,7 +64,6 @@ class E2ETestRunner extends DefaultJestRunner {
     } catch (error) {
       await this.handleError(error);
     } finally {
-      await dockerCompose.logs(serviceName, { cwd, log: true });
       await this.teardown();
     }
   }
