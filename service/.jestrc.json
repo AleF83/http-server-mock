@@ -1,4 +1,26 @@
 {
+  "projects": [
+    {
+      "displayName": "Service - Unit Tests",
+      "collectCoverage": true,
+      "collectCoverageFrom": ["<rootDir>/src/**/!(*.spec).js"],
+      "preset": "ts-jest",
+      "rootDir": ".",
+      "testEnvironment": "node",
+      "testMatch": ["<rootDir>/src/**/*.spec.ts"],
+      "testPathIgnorePatterns": ["<rootDir>/dist/", "<rootDir>/node_modules/"],
+      "verbose": true
+    },
+    {
+      "displayName": "Service - Integration Tests",
+      "preset": "ts-jest",
+      "rootDir": ".",
+      "testEnvironment": "node",
+      "testMatch": ["<rootDir>/tests/**/*.spec.ts"],
+      "testPathIgnorePatterns": ["<rootDir>/dist/", "<rootDir>/node_modules/"],
+      "verbose": true
+    }
+  ],
   "preset": "ts-jest",
   "rootDir": ".",
   "testEnvironment": "node",

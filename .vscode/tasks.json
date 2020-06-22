@@ -60,12 +60,15 @@
       "label": "tsc-watch",
       "type": "shell",
       "command": "yarn",
-      "args": [ "watch" ],
+      "args": [ "build" ],
       "isBackground": true,
       "group": "build",
       "problemMatcher": "$tsc-watch",
       "presentation": {
         "reveal": "always",
+      },
+      "options": {
+        "cwd": "${workspaceFolder}/service"
       }
     }
 	]

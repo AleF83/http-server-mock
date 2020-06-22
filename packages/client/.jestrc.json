@@ -1,4 +1,26 @@
 {
+  "projects": [
+    {
+      "displayName": "Client - Unit Tests",
+      "collectCoverage": true,
+      "collectCoverageFrom": ["<rootDir>/service/src//**/!(*.spec).js"],
+      "preset": "ts-jest",
+      "rootDir": ".",
+      "testEnvironment": "node",
+      "testMatch": ["<rootDir>/src/**/*.spec.ts"],
+      "testPathIgnorePatterns": ["<rootDir>/lib/", "<rootDir>/node_modules/"],
+      "verbose": true
+    },
+    {
+      "displayName": "Client - Integration Tests",
+      "preset": "ts-jest",
+      "rootDir": ".",
+      "testEnvironment": "node",
+      "testMatch": ["<rootDir>/tests/**/*.spec.ts"],
+      "testPathIgnorePatterns": ["<rootDir>/lib/", "<rootDir>/node_modules/"],
+      "verbose": true
+    }
+  ],
   "globals": {
     "ts-jest": {
       "tsConfig": "../../tsconfig.json"

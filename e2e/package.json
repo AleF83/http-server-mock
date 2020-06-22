@@ -3,15 +3,21 @@
   "version": "1.0.0",
   "license": "MIT",
   "scripts": {
-    "test:e2e": "jest --detectOpenHandles --config .jestrc.json --testPathPattern=\"e2e/.*\\.e2e-spec\\.ts$\""
+    "build": "tsc -p tsconfig.json",
+    "test": "jest --detectOpenHandles --config .jestrc.json",
+    "prepare": "yarn build"
   },
   "dependencies": {
     "axios": "0.19.2",
+    "docker-compose": "0.23.4",
     "http-server-mock-client": "0.1.0",
-    "http-server-mock-common": "0.1.0"
+    "http-server-mock-common": "0.1.0",
+    "jest-runner": "26.0.1",
+    "wait-on": "5.0.1"
   },
   "devDependencies": {
     "@types/jest": "26.0.0",
+    "@types/wait-on": "4.0.0",
     "jest": "26.0.1",
     "typescript": "3.9.5"
   }
