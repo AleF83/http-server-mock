@@ -11,7 +11,7 @@
     "http-server-mock-common": "0.1.0"
   },
   "devDependencies": {
-    "@types/jest": "26.0.0",
+    "@types/jest": "26.0.2",
     "jest": "26.1.0",
     "typescript": "3.9.5"
   }
