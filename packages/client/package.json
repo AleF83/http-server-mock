@@ -23,7 +23,7 @@
     "http-server-mock-common": "0.1.0"
   },
   "devDependencies": {
-    "@types/jest": "26.0.2",
+    "@types/jest": "26.0.3",
     "@types/uuid": "8.0.0",
     "axios-mock-adapter": "1.18.1",
     "jest": "26.1.0",
