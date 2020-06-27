@@ -14,7 +14,7 @@ import waitOn from 'wait-on';
 
 const serviceName = 'http-server-mock';
 const cwd = join(__dirname, '../..');
-const options: dockerCompose.IDockerComposeBuildOptions = {
+const options: dockerCompose.IDockerComposeOptions = {
   cwd,
   log: true,
 };
