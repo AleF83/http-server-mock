@@ -12,13 +12,13 @@
     "docker-compose": "0.23.4",
     "http-server-mock-client": "0.1.0",
     "http-server-mock-common": "0.1.0",
-    "jest-runner": "26.0.1",
+    "jest-runner": "26.1.0",
     "wait-on": "5.0.1"
   },
   "devDependencies": {
-    "@types/jest": "26.0.0",
+    "@types/jest": "26.0.3",
     "@types/wait-on": "4.0.0",
-    "jest": "26.0.1",
+    "jest": "26.1.0",
     "typescript": "3.9.5"
   }
 }
