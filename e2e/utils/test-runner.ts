@@ -1,4 +1,5 @@
 import { join } from 'path';
+import { execSync } from 'child_process';
 import type { Config } from '@jest/types';
 import DefaultJestRunner, {
   TestRunnerContext,
@@ -25,6 +26,9 @@ class E2ETestRunner extends DefaultJestRunner {
   }
 
   async setup(): Promise<void> {
+    console.log('===== PATH =====\n', execSync('echo $PASH', { encoding: 'utf8' }));
+    console.log('===== PATH =====\n', execSync('which docker-compose', { encoding: 'utf8' }));
+
     await dockerCompose.buildOne(serviceName, options);
 
     await dockerCompose.upAll(options);
