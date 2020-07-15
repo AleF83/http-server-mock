@@ -26,8 +26,8 @@ class E2ETestRunner extends DefaultJestRunner {
   }
 
   async setup(): Promise<void> {
-    console.log('===== PATH =====\n', execSync('echo $PASH', { encoding: 'utf8' }));
-    console.log('===== PATH =====\n', execSync('which docker-compose', { encoding: 'utf8' }));
+    console.log('===== PATH =====\n', execSync('echo $PATH', { encoding: 'utf8' }));
+    console.log('===== DOCKER-COMPOSE =====\n', execSync('which docker-compose', { encoding: 'utf8' }));
 
     await dockerCompose.buildOne(serviceName, options);
 
