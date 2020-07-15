@@ -1,5 +1,4 @@
 import { join } from 'path';
-import { execSync } from 'child_process';
 import type { Config } from '@jest/types';
 import DefaultJestRunner, {
   TestRunnerContext,
