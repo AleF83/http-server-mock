@@ -18,6 +18,11 @@ const cwd = join(__dirname, '../..');
 const options: dockerCompose.IDockerComposeOptions = {
   cwd,
   log: true,
+  env: {
+    COMPOSE_DOCKER_CLI_BUILD: '1',
+    DOCKER_BUILDKIT: '1',
+    PATH: process.env.PATH,
+  },
 };
 
 class E2ETestRunner extends DefaultJestRunner {
@@ -26,9 +31,6 @@ class E2ETestRunner extends DefaultJestRunner {
   }
 
   async setup(): Promise<void> {
-    console.log('===== PATH =====\n', execSync('echo $PATH', { encoding: 'utf8' }));
-    console.log('===== DOCKER-COMPOSE =====\n', execSync('which docker-compose', { encoding: 'utf8' }));
-
     await dockerCompose.buildOne(serviceName, options);
 
     await dockerCompose.upAll(options);
