@@ -14,14 +14,9 @@
     "e2e"
   ],
   "scripts": {
-    "prepare": "lerna run prepare",
-    "docker:build": "docker buildx build -t alef83/http-server-mock -f service/Development.Dockerfile .",
-    "docker:run": "docker run --rm -d -p 8080:8080 -p 10000-10010:10000-10010 --name server-mock alef83/http-server-mock",
-    "docker:stop": "docker stop server-mock",
-    "test:unit": "lerna run test:unit",
-    "test:integration": "lerna run test:integration",
-    "test:e2e": "yarn docker:build && yarn docker:run && lerna run test:e2e && yarn docker:stop || yarn docker:stop",
-    "test:all": "yarn test:unit && yarn test:integration && yarn test:e2e",
+    "bootstrap": "lerna bootstrap",
+    "prepare": "lerna run prepare --stream",
+    "test": "lerna run test --stream",
     "lint": "eslint . --ext .ts",
     "format": "prettier --write **/*.ts"
   },

@@ -1,8 +1,9 @@
 {
   "preset": "ts-jest",
   "rootDir": ".",
+  "runner": "<rootDir>/dist/utils/test-runner.js",
   "testEnvironment": "node",
-  "testMatch": ["**/?(*.)+(spec|e2e-spec).ts"],
+  "testMatch": ["<rootDir>/specs/**/*.e2e-spec.ts"],
   "testPathIgnorePatterns": ["<rootDir>/dist/", "<rootDir>/node_modules/"],
   "verbose": true
 }
