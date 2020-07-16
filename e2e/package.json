@@ -19,6 +19,6 @@
     "@types/jest": "26.0.4",
     "@types/wait-on": "4.0.0",
     "jest": "26.1.0",
-    "typescript": "3.9.6"
+    "typescript": "3.9.7"
   }
 }
