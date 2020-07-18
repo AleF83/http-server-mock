@@ -16,7 +16,7 @@
     "wait-on": "5.1.0"
   },
   "devDependencies": {
-    "@types/jest": "26.0.4",
+    "@types/jest": "26.0.5",
     "@types/wait-on": "4.0.0",
     "jest": "26.1.0",
     "typescript": "3.9.7"
