@@ -23,7 +23,7 @@
   "devDependencies": {
     "@types/jest": "26.0.4",
     "@types/uuid": "8.0.0",
-    "axios-mock-adapter": "1.18.1",
+    "axios-mock-adapter": "1.18.2",
     "jest": "26.1.0",
     "nock": "13.0.2",
     "typescript": "3.9.7",
