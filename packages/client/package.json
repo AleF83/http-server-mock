@@ -22,7 +22,7 @@
   },
   "devDependencies": {
     "@types/jest": "26.0.9",
-    "@types/uuid": "8.0.1",
+    "@types/uuid": "8.3.0",
     "axios-mock-adapter": "1.18.2",
     "jest": "26.3.0",
     "nock": "13.0.4",
