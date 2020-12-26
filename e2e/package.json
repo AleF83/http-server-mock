@@ -13,7 +13,7 @@
     "http-server-mock-client": "0.1.0",
     "http-server-mock-common": "0.1.0",
     "jest-runner": "26.6.3",
-    "wait-on": "5.2.0"
+    "wait-on": "5.2.1"
   },
   "devDependencies": {
     "@types/jest": "26.0.19",
