@@ -3435,10 +3435,10 @@ dir-glob@^3.0.1:
   dependencies:
     path-type "^4.0.0"
 
-docker-compose@0.23.7:
-  version "0.23.7"
-  resolved "https://registry.yarnpkg.com/docker-compose/-/docker-compose-0.23.7.tgz#62cd16bc824e1bdd5db302b144d65ac2bb30377b"
-  integrity sha512-vlDrZuwJ8m7+iXE0w1lwIdWJwVOI9tMmlA3lV0/N4SpNZIya2z539qTm5zMm6I4buPpy0r14A3KJGAGCHZTiEg==
+docker-compose@0.23.8:
+  version "0.23.8"
+  resolved "https://registry.yarnpkg.com/docker-compose/-/docker-compose-0.23.8.tgz#475b1e1294821d380316c54277ad350074186c6f"
+  integrity sha512-uUxjnz77oU+HBwwRYKO/O5a1IywSZbWNayC1+q4e4t3HzKwBHi+5pmIpESjpsEvIVl/HWAC3mPB89NjUNEBWuQ==
   dependencies:
     yaml "^1.10.2"
 
