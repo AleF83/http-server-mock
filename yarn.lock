@@ -1909,10 +1909,10 @@
   resolved "https://registry.yarnpkg.com/@types/uuid/-/uuid-8.3.1.tgz#1a32969cf8f0364b3d8c8af9cc3555b7805df14f"
   integrity sha512-Y2mHTRAbqfFkpjldbkHGY8JIzRN6XqYRliG8/24FcHm2D2PwW24fl5xMRTVGdrb7iMrwCaIEbLWerGIkXuFWVg==
 
-"@types/wait-on@5.3.0":
-  version "5.3.0"
-  resolved "https://registry.yarnpkg.com/@types/wait-on/-/wait-on-5.3.0.tgz#2d98fba6513fb2e82bb642e7fb3cb109a796d8fa"
-  integrity sha512-shduy6IRDu8ccaILJ2N7qj/43FsOpzQslIaaG0Pa4WVdIoUpnTxxViJgbEAW4xAOsHbsu9IBOF2DzLNkmYM0MQ==
+"@types/wait-on@5.3.1":
+  version "5.3.1"
+  resolved "https://registry.yarnpkg.com/@types/wait-on/-/wait-on-5.3.1.tgz#bc5520d1d8b90b9caab1bef23315685ded73320d"
+  integrity sha512-2FFOKCF/YydrMUaqg+fkk49qf0e5rDgwt6aQsMzFQzbS419h2gNOXyiwp/o2yYy27bi/C1z+HgfncryjGzlvgQ==
   dependencies:
     "@types/node" "*"
 
