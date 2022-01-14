@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "axios": "0.19.2",
-    "docker-compose": "0.23.14",
+    "docker-compose": "0.23.15",
     "http-server-mock-client": "0.1.0",
     "http-server-mock-common": "0.1.0",
     "jest-runner": "26.6.3",
