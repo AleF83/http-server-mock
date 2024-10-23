@@ -15,9 +15,9 @@
     "test": "jest --detectOpenHandles --config .jestrc.json"
   },
   "dependencies": {
-    "@nestjs/common": "7.3.2",
+    "@nestjs/common": "10.4.6",
     "@nestjs/core": "7.3.2",
-    "@nestjs/platform-fastify": "7.3.2",
+    "@nestjs/platform-fastify": "10.4.6",
     "fastify": "2.15.3",
     "http-server-mock-common": "0.1.0",
     "raw-body": "2.5.2",
@@ -27,7 +27,7 @@
     "uuid": "8.3.2"
   },
   "devDependencies": {
-    "@nestjs/testing": "7.3.2",
+    "@nestjs/testing": "10.4.6",
     "@types/jest": "27.5.2",
     "@types/uuid": "8.3.4",
     "axios": "0.19.2",
